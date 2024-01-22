@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "shawrmamod:cabbage"
+    },
+    {
+      "item": "shawrmamod:tomato"
+    },
+    {
+      "item": "shawrmamod:lavash"
+    },
+    {
+      "item": "shawrmamod:sauce"
+    },
+    {
+      "item": "shawrmamod:cucumber"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    }
+  ],
+  "result": {
+    "item": "shawrmamod:shawrma"
+  }
+}

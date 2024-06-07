@@ -1,12 +1,26 @@
 {
-  "creative_tab.shawrma_tab": "Шаверма MOD",
   "item.shawrmamod.piska": "ZALUPA",
+  "creativetab.shawrmamod.shawrma_tab": "Шаверма mod",
+  "item.shawrmamod.half_shawrma": "Половина шавермы",
   "item.shawrmamod.shawrma": "Шаверма",
+
   "item.shawrmamod.cucumber": "Огурец",
+  "item.shawrmamod.cucumber_seeds": "Семена огурца",
+
+  "item.shawrmamod.meat_shawrma": "Нарезанная курица",
+
   "item.shawrmamod.cabbage": "Капуста",
+  "item.shawrmamod.cabbage_seeds": "Семена капусты",
+
   "item.shawrmamod.tomato": "Помидор",
+  "item.shawrmamod.tomato_seeds": "Семена помидора",
   "item.shawrmamod.lavash": "Лаваш",
-  "item.shawrmamod.sauce": "Соус для шаурмы",
+  "item.shawrmamod.raw_lavash": "Сырой лаваш",
+  "item.shawrmamod.sauce": "Кетчуп",
+  "item.shawrmamod.knife": "Нож",
+  "item.shawrmamod.flour": "Мука",
+  "item.shawrmamod.salt": "Соль",
+  "item.shawrmamod.pusher": "Толкушка",
   "block.shawrmamod.speaker_block": "Колонка",
-  "block.shawrmamod.vertel_block": "Вертель"
+  "block.shawrmamod.vertel_block": "Печь для лаваша"
 }

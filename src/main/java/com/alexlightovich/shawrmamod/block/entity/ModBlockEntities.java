@@ -1,6 +1,6 @@
 package com.alexlightovich.shawrmamod.block.entity;
 
-import com.alexlightovich.shawrmamod.ModBlocks;
+import com.alexlightovich.shawrmamod.block.ModBlocks;
 import com.alexlightovich.shawrmamod.ShawrmaMod;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;

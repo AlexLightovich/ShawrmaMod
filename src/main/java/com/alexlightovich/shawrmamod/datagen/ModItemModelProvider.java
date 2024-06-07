@@ -18,11 +18,21 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
-//        simpleItem(ModItems.CABBAGE);
-//        simpleItem(ModItems.TOMATO);
-//        simpleItem(ModItems.LAVASH);
-//        simpleItem(ModItems.CUCUMBER);
-//        simpleItem(ModItems.SAUCE);
+        simpleItem(ModItems.CABBAGE);
+        simpleItem(ModItems.CABBAGE_SEEDS);
+        simpleItem(ModItems.TOMATO);
+        simpleItem(ModItems.TOMATO_SEEDS);
+        simpleItem(ModItems.LAVASH);
+        simpleItem(ModItems.RAW_LAVASH);
+        simpleItem(ModItems.CUCUMBER);
+        simpleItem(ModItems.CUCUMBER_SEEDS);
+        simpleItem(ModItems.SAUCE);
+        simpleItem(ModItems.KNIFE);
+        simpleItem(ModItems.PUSHER);
+        simpleItem(ModItems.MEAT_FOR_SHAWRMA);
+        simpleItem(ModItems.DICK);
+        simpleItem(ModItems.FLOUR);
+        simpleItem(ModItems.SALT);
     }
 //    private ItemModelBuilder modelItem(RegistryObject<Item> item) {
 //        return withExistingParent(item)

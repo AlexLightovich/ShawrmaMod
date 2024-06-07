@@ -1,5 +1,6 @@
 package com.alexlightovich.shawrmamod;
 
+import com.alexlightovich.shawrmamod.block.ModBlocks;
 import com.alexlightovich.shawrmamod.block.entity.ModBlockEntities;
 import com.alexlightovich.shawrmamod.item.ModItems;
 import com.alexlightovich.shawrmamod.screen.ModMenuTypes;
@@ -7,7 +8,10 @@ import com.alexlightovich.shawrmamod.screen.VertelBlockScreen;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -60,13 +64,24 @@ public class ShawrmaMod
     public static final RegistryObject<CreativeModeTab> SHAWRMA_TAB = CREATIVE_MODE_TABS.register("shawrma_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> ModItems.SHAWARMA.get().getDefaultInstance())
+            .title(Component.translatable("creativetab.shawrmamod.shawrma_tab"))
             .displayItems((parameters, output) -> {
+                output.accept(ModBlocks.VERTEL.get());
                 output.accept(ModItems.SHAWARMA.get());
+                output.accept(ModItems.HALF_SHAWARMA.get());
                 output.accept(ModItems.CABBAGE.get());
-                output.accept(ModItems.SAUCE.get());
+                output.accept(ModItems.CABBAGE_SEEDS.get());
+                output.accept(ModItems.TOMATO.get());
+                output.accept(ModItems.TOMATO_SEEDS.get());
                 output.accept(ModItems.CUCUMBER.get());
+                output.accept(ModItems.CUCUMBER_SEEDS.get());
                 output.accept(ModItems.LAVASH.get());
-                output.accept(ModItems.TOMATO.get());// Add the example item to the tab. For your own tabs, this method is preferred over the even
+                output.accept(ModItems.RAW_LAVASH.get());
+                output.accept(ModItems.SAUCE.get());
+                output.accept(ModItems.KNIFE.get());// Add the example item to the tab. For your own tabs, this method is preferred over the even
+                output.accept(ModItems.PUSHER.get());// Add the example item to the tab. For your own tabs, this method is preferred over the even
+                output.accept(ModItems.FLOUR.get());// Add the example item to the tab. For your own tabs, this method is preferred over the even
+                output.accept(ModItems.SALT.get());// Add the example item to the tab. For your own tabs, this method is preferred over the even
             })
             .build());
 
@@ -80,6 +95,7 @@ public class ShawrmaMod
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -114,7 +130,6 @@ public class ShawrmaMod
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
-
         }
     }
 
@@ -137,6 +152,7 @@ public class ShawrmaMod
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
             MenuScreens.register(ModMenuTypes.VERTEL_BLOCK_MENU.get(), VertelBlockScreen::new);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VERTEL.get(), RenderType.cutout());
         }
     }
 }

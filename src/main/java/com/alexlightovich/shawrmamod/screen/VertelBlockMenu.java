@@ -1,6 +1,6 @@
 package com.alexlightovich.shawrmamod.screen;
 
-import com.alexlightovich.shawrmamod.ModBlocks;
+import com.alexlightovich.shawrmamod.block.ModBlocks;
 import com.alexlightovich.shawrmamod.block.entity.VertelBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class VertelBlockMenu extends AbstractContainerMenu {
 
@@ -20,22 +19,22 @@ public class VertelBlockMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public VertelBlockMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId,inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId,inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
 
     }
 
     public VertelBlockMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.VERTEL_BLOCK_MENU.get(),pContainerId);
-        checkContainerSize(inv,2);
+        checkContainerSize(inv,4);
         blockEntity = (VertelBlockEntity) entity;
         this.level = inv.player.level();
         this.data = data;
-
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler,0,80,11));
-            this.addSlot(new SlotItemHandler(iItemHandler,0,80,59));
+            this.addSlot(new SlotItemHandler(iItemHandler,0,56,17));
+            this.addSlot(new SlotItemHandler(iItemHandler,1,116,35));
+            this.addSlot(new SlotItemHandler(iItemHandler,2,56,53));
         });
         addDataSlots(data);
     }
@@ -44,13 +43,26 @@ public class VertelBlockMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
+    public boolean isLiting() {
+        return data.get(2) > 0;
+    }
+
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int progressArrowSize = 24; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
+
+    public int getLitScaledProgress() {
+        int progress = this.data.get(2);
+        int maxProgress = this.data.get(3);  // Max Progress
+        int progressArrowSize = 14; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -68,7 +80,7 @@ public class VertelBlockMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
